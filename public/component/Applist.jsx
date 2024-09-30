@@ -1,4 +1,5 @@
 import React from 'react'
+import {NavLink , Link} from "react-router-dom";
 
 function Applist() {
   return (
@@ -18,13 +19,17 @@ function Applist() {
         <div>
         
       <ul class="navigation__menu">
-       <li><a class="text-active-blue active" href="#"><i class="fas fa-home text-blue"></i>Dashboard</a></li>
-       <li><a href="#"><i class="fas fa-link text-red"></i>Shortcuts</a></li>
-       <li><a href="#"><i class="fas fa-stream text-green"></i>Overview</a></li>
-       <li><a href="#"><i class="fas fa-calendar-week text-amber"></i>Events</a></li>
-       <li><a href="#"><i class="far fa-question-circle text-purple"></i>About</a></li>
-       <li><a href="#"><i class="fas fa-sliders-h text-cyan"></i>Services</a></li>
-       <li><a href="#"><i class="far fa-envelope text-pink"></i>Contact</a></li>
+
+      
+    
+       <li><NavLink class="text-active-blue active" to="/l"><i class="fas fa-home text-blue"></i>Dashboard</NavLink></li>
+       <li><NavLink to="/m"><i class="fas fa-link text-red"></i>Shortcuts</NavLink></li>
+       <li><NavLink to="/n"><i class="fas fa-stream text-green"></i>Overview</NavLink></li>
+       <li><NavLink to="/o"><i class="fas fa-calendar-week text-amber"></i>Events</NavLink></li>
+       <li><NavLink to="/p"><i class="far fa-question-circle text-purple"></i>About</NavLink></li>
+       <li><NavLink to="/q"><i class="fas fa-sliders-h text-cyan"></i>Services</NavLink></li>
+       <li><NavLink to="/r"><i class="far fa-envelope text-pink"></i>Contact</NavLink></li>
+       <li><NavLink to="/"><i class="far fa-envelope text-pink"></i>ANSHUL</NavLink></li>
 
        <li> 
 

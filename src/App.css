@@ -12,7 +12,8 @@
     }
     .sidebar {
       position: fixed;
-      left: -250px;
+      /* left: -250px; */
+      right: -250px;
       width: 250px;
       height: 100%;
       background: #37374c00;
@@ -36,7 +37,7 @@
       width: 100%;
       line-height: 45px;
       font-size: 20px;
-      color: rgb(0, 0, 0);
+      color: rgb(0, 0, 0) ;
       padding-left: 20px;
       box-sizing: border-box;
       transition: .4s;
@@ -81,7 +82,8 @@
 
     }
     #check:checked ~ .sidebar{
-      left: 0;
+      /* left: 0; */
+      right: 0;
     }
     #check:checked ~ label #btn{
       left: 250px;
@@ -102,16 +104,30 @@
       transition: all .5s;
     }
     
-    .text-active-blue.active {
+    /* .text-active-blue.active {
         color: #ffffff!important;
-    }
+    } */
     
     .navigation__menu>li>a.active {
-        color: #ffffff;
+        color: #ffffff !important;
         background-color: #000000;
           border: .00001px solid #0096ff8a;
         box-shadow: #00000045 0px 25px 20px -20px;
+       border-radius: 50px !important;
+
     }
+
+
+    /* li .active  { */
+      /* color: #ffffff !important; */
+      /* background-color: #000000; */
+        /* border: .00001px solid #0096ff8a; */
+      /* box-shadow: #00000054 0px 25px 20px -20px;
+       background-color: red;
+       color: blue !important; */
+       /* box-shadow: 20px 20px 20px rgb(40, 255, 29); */
+       /* border-radius: 50px !important; */
+  /* } */
     
     .text-red {
         color: #e53935!important;
