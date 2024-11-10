@@ -1,244 +1,69 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
-import './App.css'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
+import './App.css';
+import './media.css';
 
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import LocomotiveScroll from 'locomotive-scroll';
-import Applist from '../public/component/Applist';
+import 'react-toastify/dist/ReactToastify.css';
 
 
+import { Route , Routes } from 'react-router-dom' ;
+
+import Applist from '../component/Applist';
+import Login from '../component/Login';
+import Background from '../component/Background';
+import Hero from '../component/Hero';
+import Error from '../component/Error';
+import Signup from '../component/Signup';
+import Project from '../component/Project';
+import Projectupload from '../component/Projectupload';
+import Contact from '../component/Contact';
+import Logout from '../component/Logout';
+import Allproject from '../component/Allproject';
+import Footer from '../component/Footer';
+import Profile from '../component/Profile';
+import Users from '../component/users';
+import Scrolltotop from '../component/Scrolltotop';
+import User from '../component/User';
+import Follow_user_list from '../component/Follow_user_list';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
  
 function App() {
-  gsap.registerPlugin(ScrollTrigger);
-
-
- const scrollRef = useRef(null);
-
-//  useLayoutEffect(()=>{
-
-//   const scroll = new LocomotiveScroll({
-//     el: scrollRef.current,
-//     smooth: true,
-//     // direction: 'horizontal',
-//   });
-
-//   return()=>{
-//     scroll.destroy();
-//   }
-
-
-//  }, []) ;
-
-
-
-
-
-  useGSAP(()=>{
-
-
- 
-    
-    function cursoreffect(){
-      var page1contant = document.querySelector("#page1_contant");
-      var cursor = document.querySelector("#cursor");
-      
-      
-      page1contant.addEventListener("mousemove", function(e){
-          // cursor.style.left = e.clientX + "px";
-          // cursor.style.top = e.clientY + "px";
-      
-          gsap.to(cursor , {
-              x : e.clientX,
-              y : e.clientY,
-          })
-      
-      })
-
-      
-      page1contant.addEventListener("mouseenter", function(e){
-          // cursor.style.left = e.clientX + "px";
-          // cursor.style.top = e.clientY + "px";
-      
-          gsap.to(cursor , {
-             scale :1  , 
-             opacity :1
-          })
-      
-      })
-      page1contant.addEventListener("mouseleave", function(e){
-          // cursor.style.left = e.clientX + "px";
-          // cursor.style.top = e.clientY + "px";
-      
-          gsap.to(cursor , {
-            scale:0 , 
-            opacity :0
-          })
-      
-      })
-  
-  
-  }
-  
-  // cursoreffect();
-  
-  
-  
-  var tl = gsap.timeline();
-  
-  tl.from("#page1_contant > h1 span",{
-      
-      y : 200 , 
-      opasity : 0,
-      stagger : 0.1 ,
-      duration : 0.5
-  })
-  
-  
-  
-  var ti2 = gsap.timeline({scrollTrigger : {
-    trigger : '#page2',
-    markers : true ,
-    start : 'top 50%',
-    end : 'top 50%',
-    scrub :1,
-    pin : true,
-
-    // pinType : 'top',
-    pinSpacing : true,
-    // ease : 'power4.inOut'
- }})
-
-
-   
-    // ti2.from('#page2_big_text', {y: "50%", opacity: 0 },)
-    ti2.from('.text_rigth', {x: "50%", opacity: 0   }, "A") ;
-    ti2.from('.text_left', {x: "-50%", opacity: 0   }, "A") ;
-
-    // ti2.to('.text_rigth', {y: "-50%",})
-
-  
-
-
-
-
-  })
-
 
 
   return (
     <>
-    <div>
-    <div className="starsec"></div>
-    <div className="starthird"></div>
-    <div className="starfourth"></div>
-    <div className="starfifth"></div>
-  </div>
-
-<Applist />
-
-  <div ref={scrollRef} id="main" className='scroll-container'>
-         <div id="page1">
-
-            {/* <div id="cursor">Play Real</div> */}
-
-            <video src="RJ-BALL-BLUE-ORANGE-scaled.webm" autoplay loop muted></video>
-           
-            {/* <img src="abcd.gif" alt="">  */}
-           
-            <div id="page1_contant">
-
-                <nav>
-                    <h1>The Venture Agency.</h1>
-                    {/* <h4>Menu</h4> */}
-
-        {/* <i class="fas fa-bars" id="btn">MENU</i> */}
-
-          <label for="check">
-           {/* <i style={{color:"black"}}>MENU</i> */}
-        <i style={{color:"black" , fontSize : "2vw"}} class="fas fa-bars"></i>
-
-        {/* <i class="fas fa-times" id="cancel">X</i> */}
-          </label>
-
-                </nav>
-
-                <p className="page1_p">◀ showcasing skills <span>with</span> ↴ ▶</p>
-
-                <h1>
-                     {/* <span>r</span>
-                    <span>e</span>
-                    <span>j</span>
-                    <span>o</span>
-                    <span>u</span>
-                    <span>i</span>
-                    <span>c</span>
-                    <span>e</span>  */}
+   
+   <Background />
+   <Applist />
+   <Scrolltotop />
+       <Routes>
+               <Route  path="/" element={<Hero/>} />
+               <Route  path="/login" element={<Login />} />
+               <Route  path="/signup" element={<Signup/>} />
+               <Route  path="/profile" element={<Profile />} />
+               <Route  path="/user/:user_id" element={<User/>} />
+               {/* <Route  path="/user" element={<User/>} /> */}
+               {/* <Route  path="/project" element={<Project />} /> */}
+               <Route  path="/pu" element={<Projectupload />} />
+               <Route  path="/contact" element={<Contact />} />
+               <Route  path="/logout" element={<Logout/>} />
+               <Route  path="/allproject" element={<Allproject />} />
+               <Route  path="/footer" element={<Footer />} />
+               <Route  path="/users" element={<Users />} />
+               <Route  path="/followers_users" element={<Follow_user_list />} />
+               {/* <Route  path="/contact/Name" element={<name />} /> */}
+               <Route path="/*" element={<Error/>} />
+       </Routes>
 
 
-                  {/* <span>p</span>
-                    <span>o</span>
-                    <span>r</span>
-                    <span>t</span>
-                    <span>f</span>
-                    <span>o</span>
-                    <span>l</span>
-                    <span>i</span>
-                    <span>o</span>  */}
+<Footer />
 
-                    
-                    {/* <span>c</span>
-                    <span>e</span>  */}
-
-
-                    <span>s</span>
-                    <span>k</span>
-                    <span>i</span>
-                    <span>l</span>
-                    <span>l</span>
-                    <span>f</span>
-                    <span>o</span>
-                    <span>l</span>
-                    <span>i</span>
-                    <span>o</span>
-
-                </h1>
-
-            </div>
-         </div>
-
-         <div data-scroll data-scroll-speed={5} id="page2">
-
-
-            <div>
-                
-                <div><p>Tomorrow’s Brands, Today™</p>
-                <p>Paris / San Diego</p></div>
-
-
-                <p id="page2_big_text">
-
-                  <span className="text_rigth">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We are a venture firm and digital agency. Our </span>
-
-                  <span className="text_left"> mission is to transform founders' visions into </span>
-
-                  <span className="text_rigth"> remarkable brands. Choose traditional </span>
-
-                  <span className="text_left"> compensation or an equity offset through our </span>
-
-                  <span className="text_rigth"> Venture Model — your vision, your decision.</span>
-
-                  </p></div>
-
-         </div>
-    </div>
-
-
-
-
-  <div className="second"></div>
+   
     </>
   )
 }
